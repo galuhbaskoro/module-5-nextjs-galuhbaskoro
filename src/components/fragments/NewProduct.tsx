@@ -5,12 +5,12 @@ import { fetcher } from '@/utils/fetcher';
 function NewProduct() {
 
   const { data, error, isLoading } = useSWR("https://fakestoreapi.com/products?limit=4",fetcher);
+  if (error) return <div>Failed to load</div>;
+  if (isLoading) return <div>Loading...</div>;
    
   return (
     <div>
       <div className='flex flex-wrap gap-6 justify-center'>
-        {error && <p className='text-gray-600 text-xl'>Failed to load</p>}
-        {isLoading && <p className='text-gray-600 text-xl'>Loading...</p>}
         {data?.map((product: ProductModel, idx: number) => (
           <ProductCard
             key={idx}
