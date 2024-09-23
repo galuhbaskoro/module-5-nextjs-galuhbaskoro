@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 interface ProductCardProps {
@@ -6,7 +7,6 @@ interface ProductCardProps {
   category: string,
   price: number,
   image: string
-  viewDetail: VoidFunction
 }
 
 function ProductCard(props: ProductCardProps) {
@@ -35,13 +35,7 @@ function ProductCard(props: ProductCardProps) {
 
       {/* Button */}
       <div className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          onClick={props.viewDetail}
-          className="rounded-xl px-3 py-2 font-semibold text-white bg-orange-600 hover:bg-orange-700"
-        >
-          View Detail
-        </button>
+        <Link href={`/products/detail/${props.id}`} className='rounded-xl px-3 py-2 font-semibold text-white bg-orange-600 hover:bg-orange-700'> View Detail</Link>
       </div>
     </div>
   );

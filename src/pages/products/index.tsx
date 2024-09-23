@@ -1,7 +1,6 @@
 import ProductCard from '@/components/fragments/ProductCard';
 import React from 'react';
 
-
 export async function getServerSideProps() {
   const response = await fetch("https://fakestoreapi.com/products");
   const result = await response.json();
@@ -13,9 +12,7 @@ export async function getServerSideProps() {
 };
 
 function ProductPage(props: {products: ProductModel[]}) {
-
   const {products} = props;
-
   return (
    <React.Fragment>
     <div className='flex flex-wrap gap-6 justify-center'>
@@ -27,12 +24,11 @@ function ProductPage(props: {products: ProductModel[]}) {
           category={product.category}
           price={product.price}
           image={product.image}
-          viewDetail={() => {alert('test product button')}}
         />
       ))}
     </div>
    </React.Fragment>
-  )
-}
+  );
+};
 
 export default ProductPage;

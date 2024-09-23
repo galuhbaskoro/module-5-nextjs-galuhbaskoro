@@ -19,7 +19,6 @@ function NewProduct() {
             category={product.category}
             price={product.price}
             image={product.image}
-            viewDetail={() => {alert('test product button')}}
           /> 
         ))}
       </div>
