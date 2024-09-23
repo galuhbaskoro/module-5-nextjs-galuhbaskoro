@@ -7,8 +7,13 @@ function CartPage() {
     if(!auth) window.location.replace('/login');
   },[]);
 
-  const cartStorage = JSON.parse(localStorage.getItem('cart') || '[]');
-  const [cart] = useState<ProductModel[]>(cartStorage);
+  const [cartStorage, setCartStorage] = useState<ProductModel[]>([]);
+  const [cart, setCart] = useState<ProductModel[]>([]);
+
+  useEffect(() => {
+    setCartStorage(JSON.parse(localStorage.getItem('cart') || '[]'));
+    setCart(cartStorage);
+  },[]);
 
   let number = 1;
 
